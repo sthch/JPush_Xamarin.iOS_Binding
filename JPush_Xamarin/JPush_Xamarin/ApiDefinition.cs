@@ -96,13 +96,13 @@ namespace JPush
         [Export("identifiers", ArgumentSemantic.Copy)]
         string[] Identifiers { get; set; }
 
-        // @property (copy, nonatomic) UILocalNotification * notificationObj __attribute__((availability(ios, introduced=4_0, deprecated=10_0)));
+        // @property (copy, nonatomic) UILocalNotification * notificationObj __attribute__((availability(ios, introduced=4.0, deprecated=10.0)));
         [Introduced(PlatformName.iOS, 4, 0)]
         [Deprecated(PlatformName.iOS, 10, 0)]
         [Export("notificationObj", ArgumentSemantic.Copy)]
         UILocalNotification NotificationObj { get; set; }
 
-        // @property (assign, nonatomic) BOOL delivered __attribute__((availability(ios, introduced=10_0)));
+        // @property (assign, nonatomic) BOOL delivered __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("delivered")]
         bool Delivered { get; set; }
@@ -151,7 +151,7 @@ namespace JPush
         [Export("badge", ArgumentSemantic.Copy)]
         NSNumber Badge { get; set; }
 
-        // @property (copy, nonatomic) NSString * action __attribute__((availability(ios, introduced=8_0, deprecated=10_0)));
+        // @property (copy, nonatomic) NSString * action __attribute__((availability(ios, introduced=8.0, deprecated=10.0)));
         [Introduced(PlatformName.iOS, 8, 0)]
         [Deprecated(PlatformName.iOS, 10, 0)]
         [Export("action")]
@@ -174,17 +174,17 @@ namespace JPush
         [Export("soundSetting", ArgumentSemantic.Copy)]
         JPushNotificationSound SoundSetting { get; set; }
 
-        // @property (copy, nonatomic) NSArray * attachments __attribute__((availability(ios, introduced=10_0)));
+        // @property (copy, nonatomic) NSArray * attachments __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("attachments", ArgumentSemantic.Copy)]
         NSObject[] Attachments { get; set; }
 
-        // @property (copy, nonatomic) NSString * threadIdentifier __attribute__((availability(ios, introduced=10_0)));
+        // @property (copy, nonatomic) NSString * threadIdentifier __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("threadIdentifier")]
         string ThreadIdentifier { get; set; }
 
-        // @property (copy, nonatomic) NSString * launchImageName __attribute__((availability(ios, introduced=10_0)));
+        // @property (copy, nonatomic) NSString * launchImageName __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("launchImageName")]
         string LaunchImageName { get; set; }
@@ -208,23 +208,23 @@ namespace JPush
         [Export("repeat")]
         bool Repeat { get; set; }
 
-        // @property (copy, nonatomic) NSDate * fireDate __attribute__((availability(ios, introduced=2_0, deprecated=10_0)));
+        // @property (copy, nonatomic) NSDate * fireDate __attribute__((availability(ios, introduced=2.0, deprecated=10.0)));
         [Introduced(PlatformName.iOS, 2, 0)]
         [Deprecated(PlatformName.iOS, 10, 0)]
         [Export("fireDate", ArgumentSemantic.Copy)]
         NSDate FireDate { get; set; }
 
-        // @property (copy, nonatomic) CLRegion * region __attribute__((availability(ios, introduced=8_0)));
+        // @property (copy, nonatomic) CLRegion * region __attribute__((availability(ios, introduced=8.0)));
         [iOS(8, 0)]
         [Export("region", ArgumentSemantic.Copy)]
         CLRegion Region { get; set; }
 
-        // @property (copy, nonatomic) NSDateComponents * dateComponents __attribute__((availability(ios, introduced=10_0)));
+        // @property (copy, nonatomic) NSDateComponents * dateComponents __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("dateComponents", ArgumentSemantic.Copy)]
         NSDateComponents DateComponents { get; set; }
 
-        // @property (assign, nonatomic) NSTimeInterval timeInterval __attribute__((availability(ios, introduced=10_0)));
+        // @property (assign, nonatomic) NSTimeInterval timeInterval __attribute__((availability(ios, introduced=10.0)));
         [iOS(10, 0)]
         [Export("timeInterval")]
         double TimeInterval { get; set; }
@@ -255,20 +255,15 @@ namespace JPush
     [BaseType(typeof(NSObject))]
     interface JPUSHService
     {
-        // +(void)setupWithOption:(NSDictionary *)launchingOption __attribute__((deprecated("JPush 2.1.0 版本已过期")));
-        [Static]
-        [Export("setupWithOption:")]
-        void SetupWithOption([NullAllowed]NSDictionary launchingOption);
-
         // +(void)setupWithOption:(NSDictionary *)launchingOption appKey:(NSString *)appKey channel:(NSString *)channel apsForProduction:(BOOL)isProduction;
         [Static]
         [Export("setupWithOption:appKey:channel:apsForProduction:")]
-        void SetupWithOption([NullAllowed]NSDictionary launchingOption, string appKey, string channel, bool isProduction);
+        void SetupWithOption([NullAllowed] NSDictionary launchingOption, string appKey, string channel, bool isProduction);
 
         // +(void)setupWithOption:(NSDictionary *)launchingOption appKey:(NSString *)appKey channel:(NSString *)channel apsForProduction:(BOOL)isProduction advertisingIdentifier:(NSString *)advertisingId;
         [Static]
         [Export("setupWithOption:appKey:channel:apsForProduction:advertisingIdentifier:")]
-        void SetupWithOption([NullAllowed]NSDictionary launchingOption, string appKey, string channel, bool isProduction, string advertisingId);
+        void SetupWithOption([NullAllowed] NSDictionary launchingOption, string appKey, string channel, bool isProduction, string advertisingId);
 
         // +(void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
         [Static]
@@ -370,6 +365,21 @@ namespace JPush
         [Export("setLocation:")]
         void SetLocation(CLLocation location);
 
+        // +(void)setGeofenecMaxCount:(NSInteger)count;
+        [Static]
+        [Export("setGeofenecMaxCount:")]
+        void SetGeofenecMaxCount(nint count);
+
+        // +(void)registerLbsGeofenceDelegate:(id<JPUSHGeofenceDelegate>)delegate withLaunchOptions:(NSDictionary *)launchOptions;
+        [Static]
+        [Export("registerLbsGeofenceDelegate:withLaunchOptions:")]
+        void RegisterLbsGeofenceDelegate(JPUSHGeofenceDelegate @delegate, NSDictionary launchOptions);
+
+        // +(void)removeGeofenceWithIdentifier:(NSString *)geofenceId;
+        [Static]
+        [Export("removeGeofenceWithIdentifier:")]
+        void RemoveGeofenceWithIdentifier(string geofenceId);
+
         // +(void)addNotification:(JPushNotificationRequest *)request;
         [Static]
         [Export("addNotification:")]
@@ -390,8 +400,8 @@ namespace JPush
         [Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:")]
         UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName);
 
-        // +(UILocalNotification *)setLocalNotification:(NSDate *)fireDate alertBody:(NSString *)alertBody badge:(int)badge alertAction:(NSString *)alertAction identifierKey:(NSString *)notificationKey userInfo:(NSDictionary *)userInfo soundName:(NSString *)soundName region:(CLRegion *)region regionTriggersOnce:(BOOL)regionTriggersOnce category:(NSString *)category __attribute__((deprecated("JPush 2.1.9 版本已过期"))) __attribute__((availability(ios, introduced=8_0)));
-        //[iOS(8, 0)]
+        // +(UILocalNotification *)setLocalNotification:(NSDate *)fireDate alertBody:(NSString *)alertBody badge:(int)badge alertAction:(NSString *)alertAction identifierKey:(NSString *)notificationKey userInfo:(NSDictionary *)userInfo soundName:(NSString *)soundName region:(CLRegion *)region regionTriggersOnce:(BOOL)regionTriggersOnce category:(NSString *)category __attribute__((availability(ios, introduced=8.0))) __attribute__((deprecated("JPush 2.1.9 版本已过期")));
+        [iOS(8, 0)]
         [Static]
         [Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:region:regionTriggersOnce:category:")]
         UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName, CLRegion region, bool regionTriggersOnce, string category);
@@ -414,7 +424,6 @@ namespace JPush
         // +(NSArray *)findLocalNotificationWithIdentifier:(NSString *)notificationKey __attribute__((deprecated("JPush 2.1.9 版本已过期")));
         [Static]
         [Export("findLocalNotificationWithIdentifier:")]
-
         NSObject[] FindLocalNotificationWithIdentifier(string notificationKey);
 
         // +(void)clearAllLocalNotifications __attribute__((deprecated("JPush 2.1.9 版本已过期")));
@@ -498,7 +507,7 @@ namespace JPush
         [Export("jpushNotificationCenter:willPresentNotification:withCompletionHandler:")]
         void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<nint> completionHandler);
 
-        // @required -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
+        // @required -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler;
         [Abstract]
         [Export("jpushNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
         void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
@@ -510,23 +519,19 @@ namespace JPush
         void OpenSettingsForNotification(UNUserNotificationCenter center, [NullAllowed] UNNotification notification);
     }
 
-    // @interface JPushNotificationExtensionService : NSObject
-    //[BaseType(typeof(NSObject))]
-    //interface JPushNotificationExtensionService
-    //{
-    //    // +(void)jpushSetAppkey:(NSString *)appkey;
-    //    [Static]
-    //    [Export("jpushSetAppkey:")]
-    //    void JpushSetAppkey(string appkey);
+    // @protocol JPUSHGeofenceDelegate <NSObject>
+    [Protocol, Model(AutoGeneratedName = true)]
+    [BaseType(typeof(NSObject))]
+    interface JPUSHGeofenceDelegate
+    {
+        // @required -(void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didEnterRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+        [Abstract]
+        [Export("jpushGeofenceIdentifer:didEnterRegion:error:")]
+        void DidEnterRegion(string geofenceId, [NullAllowed] NSDictionary userInfo, [NullAllowed] NSError error);
 
-    //    // +(void)jpushReceiveNotificationRequest:(UNNotificationRequest *)request with:(void (^)(void))completion;
-    //    [Static]
-    //    [Export("jpushReceiveNotificationRequest:with:")]
-    //    void JpushReceiveNotificationRequest(UNNotificationRequest request, Action completion);
-
-    //    // +(void)setLogOff;
-    //    [Static]
-    //    [Export("setLogOff")]
-    //    void SetLogOff();
-    //}
+        // @required -(void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didExitRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+        [Abstract]
+        [Export("jpushGeofenceIdentifer:didExitRegion:error:")]
+        void DidExitRegion(string geofenceId, [NullAllowed] NSDictionary userInfo, [NullAllowed] NSError error);
+    }
 }

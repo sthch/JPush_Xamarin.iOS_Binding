@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,13 +12,13 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Xamarin.iOS.JPush</PackageId>
-    <PackageVersion>3.1.1</PackageVersion>
+    <PackageVersion>3.2.1</PackageVersion>
     <Authors>WenfengCheng</Authors>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <Owners>WenfengCheng, Funky_Xamarin</Owners>
     <PackageProjectUrl>https://github.com/Wenfengcheng/JPush_Xamarin.iOS_Binding</PackageProjectUrl>
-    <PackageReleaseNotes>Release JPush 3.1.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Release JPush 3.2.1</PackageReleaseNotes>
     <Summary>Xamarin.iOS Binding Library - JPush</Summary>
     <PackageTags>Xamarin.iOS,  Xamarin, JPush, APNS, Notification</PackageTags>
     <Title>Funky - JPush</Title>
@@ -55,13 +55,13 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="jcore-ios-1.2.5.a">
+    <NativeReference Include="jcore-ios-2.1.1.a">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CFNetwork CoreFoundation CoreTelephony SystemConfiguration CoreGraphics Foundation UIKit Security UserNotifications</Frameworks>
       <LinkerFlags>-lz -lresolv</LinkerFlags>
     </NativeReference>
-    <NativeReference Include="jpush-ios-3.1.1.a">
+    <NativeReference Include="jpush-ios-3.2.1.a">
       <Kind>Static</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
@@ -71,5 +71,5 @@
     <BundleResource Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
-  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
 </Project>
