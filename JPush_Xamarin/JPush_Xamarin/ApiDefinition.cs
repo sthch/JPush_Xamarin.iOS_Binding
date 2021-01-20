@@ -198,6 +198,11 @@ namespace JPush
         [iOS(12, 0)]
         [Export("summaryArgumentCount")]
         nuint SummaryArgumentCount { get; set; }
+
+        // @property (copy, nonatomic) NSString * targetContentIdentifier __attribute__((availability(ios, introduced=13.0)));
+        [iOS(13, 0)]
+        [Export("targetContentIdentifier")]
+        string TargetContentIdentifier { get; set; }
     }
 
     // @interface JPushNotificationTrigger : NSObject <NSCopying, NSCoding>
@@ -512,11 +517,11 @@ namespace JPush
         [Export("jpushNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
         void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
 
-        // @required -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification * _Nullable)notification __attribute__((availability(ios, introduced=12.0)));
+        // @required -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification __attribute__((availability(ios, introduced=12.0)));
         [iOS(12, 0)]
         [Abstract]
         [Export("jpushNotificationCenter:openSettingsForNotification:")]
-        void OpenSettingsForNotification(UNUserNotificationCenter center, [NullAllowed] UNNotification notification);
+        void OpenSettingsForNotification(UNUserNotificationCenter center, UNNotification notification);
     }
 
     // @protocol JPUSHGeofenceDelegate <NSObject>
@@ -524,14 +529,14 @@ namespace JPush
     [BaseType(typeof(NSObject))]
     interface JPUSHGeofenceDelegate
     {
-        // @required -(void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didEnterRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+        // @required -(void)jpushGeofenceIdentifer:(NSString *)geofenceId didEnterRegion:(NSDictionary *)userInfo error:(NSError *)error;
         [Abstract]
         [Export("jpushGeofenceIdentifer:didEnterRegion:error:")]
-        void DidEnterRegion(string geofenceId, [NullAllowed] NSDictionary userInfo, [NullAllowed] NSError error);
+        void DidEnterRegion(string geofenceId, NSDictionary userInfo, NSError error);
 
-        // @required -(void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didExitRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+        // @required -(void)jpushGeofenceIdentifer:(NSString *)geofenceId didExitRegion:(NSDictionary *)userInfo error:(NSError *)error;
         [Abstract]
         [Export("jpushGeofenceIdentifer:didExitRegion:error:")]
-        void DidExitRegion(string geofenceId, [NullAllowed] NSDictionary userInfo, [NullAllowed] NSError error);
+        void DidExitRegion(string geofenceId, NSDictionary userInfo, NSError error);
     }
 }

@@ -13,6 +13,7 @@ namespace JPush
         CarPlay = 8,
         CriticalAlert = 16,
         ProvidesAppNotificationSettings = 32,
-        Provisional = 64
+        Provisional = 64,
+        Announcement = 128
     }
 }

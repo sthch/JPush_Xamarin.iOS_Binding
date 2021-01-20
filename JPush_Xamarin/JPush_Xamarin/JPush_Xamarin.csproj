@@ -12,13 +12,13 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Xamarin.iOS.JPush</PackageId>
-    <PackageVersion>3.2.1</PackageVersion>
+    <PackageVersion>3.2.4</PackageVersion>
     <Authors>WenfengCheng</Authors>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <Owners>WenfengCheng, Funky_Xamarin</Owners>
     <PackageProjectUrl>https://github.com/Wenfengcheng/JPush_Xamarin.iOS_Binding</PackageProjectUrl>
-    <PackageReleaseNotes>Release JPush 3.2.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Release JPush 3.2.4</PackageReleaseNotes>
     <Summary>Xamarin.iOS Binding Library - JPush</Summary>
     <PackageTags>Xamarin.iOS,  Xamarin, JPush, APNS, Notification</PackageTags>
     <Title>Funky - JPush</Title>
@@ -55,13 +55,13 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="jcore-ios-2.1.1.a">
+    <NativeReference Include="jcore-ios-2.1.2.a">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CFNetwork CoreFoundation CoreTelephony SystemConfiguration CoreGraphics Foundation UIKit Security UserNotifications</Frameworks>
       <LinkerFlags>-lz -lresolv</LinkerFlags>
     </NativeReference>
-    <NativeReference Include="jpush-ios-3.2.1.a">
+    <NativeReference Include="jpush-noidfa-ios-3.2.4.a">
       <Kind>Static</Kind>
       <SmartLink>True</SmartLink>
       <ForceLoad>True</ForceLoad>
